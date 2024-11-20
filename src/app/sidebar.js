@@ -1,3 +1,4 @@
+import { IconRenderer } from "@amoga-org/react-components";
 import { ExpandLess, ExpandMore } from "@mui/icons-material";
 import {
   Box,
@@ -8,7 +9,6 @@ import {
   ListItem,
   ListItemButton,
   ListItemText,
-  Typography,
 } from "@mui/material";
 import React, { useState } from "react";
 import { sidebardata } from "./sidebardata";
@@ -44,21 +44,22 @@ const SidebarItem = ({ item }) => {
           onClick={handleToggle}
           sx={{ gap: 1, borderRadius: "4px", padding: "4px 8px" }}
         >
+          {console.log("Item:", item?.icon)}
           {item?.icon?.svg ? (
-            <Typography
-              sx={{
-                height: "30px",
-                width: "30px",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            ></Typography>
+            <IconRenderer
+              keyname={`bottompannel-bell-icon`}
+              version={1}
+              svg={item?.icon?.svg}
+              style={item?.icon?.style}
+              color="#BBDCFE"
+              height={18}
+              width={18}
+            />
           ) : (
             <Box sx={{ width: 30 }} />
           )}
           <ListItemText primary={item.display_name} />
-          {hasChildren && (isOpen ? <ExpandLess /> : <ExpandMore />)}{" "}
+          {hasChildren && (isOpen ? <ExpandLess /> : <ExpandMore />)}
           {/* Toggle the icon based on isOpen */}
         </ListItemButton>
       </ListItem>
