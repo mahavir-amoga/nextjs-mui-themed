@@ -20,6 +20,44 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+/* Apply Flexbox for the full-page layout */
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+header {
+  background-color: #333;
+  color: white;
+  padding: 10px;
+  position: fixed; /* Fixes header at the top */
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000; /* Ensures header stays on top */
+}
+
+footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  margin-top: auto; /* Pushes footer to the bottom of the page */
+}
+
+.content {
+  padding: 60px 20px 20px; /* Add space for the fixed header */
+  flex-grow: 1; /* Makes sure content takes available space */
+}
+
+/* Global styles for scrollbar */
 * {
   &::-webkit-scrollbar {
     width: 0.2em;
