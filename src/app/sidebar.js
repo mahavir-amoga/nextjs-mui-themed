@@ -3,7 +3,6 @@ import { ExpandLess, ExpandMore } from "@mui/icons-material";
 import {
   Box,
   Collapse,
-  Divider,
   Drawer,
   List,
   ListItem,
@@ -14,12 +13,12 @@ import React, { useState } from "react";
 import { sidebardata } from "./sidebardata";
 
 const SidebarItem = ({ item }) => {
-  const [isOpen, setIsOpen] = useState(false); // Local state for each item to control its open/close state
+  const [isOpen, setIsOpen] = useState(false);
   const hasChildren = Boolean(item.children && item.children.length > 0);
 
   const handleToggle = () => {
     if (hasChildren) {
-      setIsOpen((prev) => !prev); // Toggle the open/close state
+      setIsOpen((prev) => !prev);
     }
   };
 
@@ -44,7 +43,6 @@ const SidebarItem = ({ item }) => {
           onClick={handleToggle}
           sx={{ gap: 1, borderRadius: "4px", padding: "4px 8px" }}
         >
-          {console.log("Item:", item?.icon)}
           {item?.icon?.svg ? (
             <IconRenderer
               keyname={`bottompannel-bell-icon`}
@@ -56,11 +54,10 @@ const SidebarItem = ({ item }) => {
               width={18}
             />
           ) : (
-            <Box sx={{ width: 30 }} />
+            <Box sx={{ width: 20 }} />
           )}
           <ListItemText primary={item.display_name} />
           {hasChildren && (isOpen ? <ExpandLess /> : <ExpandMore />)}
-          {/* Toggle the icon based on isOpen */}
         </ListItemButton>
       </ListItem>
       {hasChildren && (
@@ -105,11 +102,9 @@ const Sidebar = () => {
           <SidebarSection data={sidebardata} />
         </Box>
 
-        <Divider />
-
         {/* Lower Section - Fixed at Bottom */}
-        <Box sx={{ borderTop: "1px solid #ddd" }}>
-          <SidebarSection data={sidebardata.slice(3, 6)} />{" "}
+        <Box sx={{ borderTop: "0.5px solid #dddddd33", marginTop: "16px" }}>
+          <SidebarSection data={sidebardata.slice(3, 6)} />
         </Box>
       </Box>
     </Drawer>
